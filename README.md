@@ -56,19 +56,30 @@ Paste a sample of your app's CLI or Streamlit output here so a reader can see wh
 
 ## 🧪 Testing PawPal+
 
+Run the full test suite with:
+
 ```bash
-# Run the full test suite:
-pytest
-
-# Run with coverage:
-pytest --cov
+python -m pytest
 ```
 
-Sample test output:
+These tests cover the core scheduling behaviors for PawPal+, including task sorting, recurring task creation, and conflict detection when two tasks share the same time.
 
+Example successful test run:
+
+```text
+============================= test session starts ==============================
+platform darwin -- Python 3.12.7, pytest-9.1.0, pluggy-6.0.0
+rootdir: /Users/gabrielherrera/Documents/ai110-module2show-pawpal-starter
+configfile: pytest.ini
+plugins: anyio-4.2.0
+collected 5 items
+
+tests/test_pawpal.py .....                                               [100%]
+
+============================== 5 passed in 0.02s ===============================
 ```
-# Paste your pytest output here
-```
+
+Confidence Level: ★★★★★
 
 ## 📐 Smarter Scheduling
 

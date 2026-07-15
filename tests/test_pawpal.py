@@ -20,6 +20,20 @@ def test_task_addition():
     assert len(pet.tasks) == initial_count + 1
 
 
+def test_sorting_correctness_returns_tasks_in_chronological_order():
+    owner = Owner(name="Jordan")
+    pet = Pet(name="Mochi", species="dog")
+    owner.add_pet(pet)
+    pet.add_task(Task(description="Late task", time="09:30"))
+    pet.add_task(Task(description="Early task", time="07:00"))
+    pet.add_task(Task(description="Mid task", time="08:15"))
+    scheduler = Scheduler(owner=owner)
+
+    sorted_tasks = scheduler.build_daily_schedule()
+
+    assert [task.description for _, task in sorted_tasks] == ["Early task", "Mid task", "Late task"]
+
+
 def test_recurring_task_creates_next_occurrence():
     owner = Owner(name="Jordan")
     pet = Pet(name="Mochi", species="dog")
