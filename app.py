@@ -88,4 +88,44 @@ st.divider()
 st.subheader("Build Schedule")
 if st.button("Generate schedule"):
     scheduler = Scheduler(owner=owner)
-    st.text(scheduler.print_schedule())
+    sorted_schedule = scheduler.build_daily_schedule()
+    pending_tasks = scheduler.filter_tasks(items=sorted_schedule, completed=False)
+    recurring_tasks = scheduler.get_recurring_tasks(items=pending_tasks)
+    conflict_warnings = scheduler.detect_conflicts(items=sorted_schedule)
+
+    if pending_tasks:
+        st.success("Your schedule is ready and sorted by time.")
+        rows = [
+            {
+                "Pet": pet.name,
+                "Task": task.description,
+                "Time": task.time,
+                "Frequency": task.frequency,
+                "Status": "Pending",
+            }
+            for pet, task in pending_tasks
+        ]
+        st.table(rows)
+    else:
+        st.info("No pending tasks to show right now.")
+
+    if recurring_tasks:
+        st.caption("Recurring tasks:")
+        for pet, task in recurring_tasks:
+            st.write(f"- {pet.name}: {task.description} at {task.time} ({task.frequency})")
+
+    if conflict_warnings:
+        st.warning("Potential conflicts found:")
+        for warning in conflict_warnings:
+            st.warning(warning)
+
+    if pending_tasks:
+        st.subheader("Quick actions")
+        for pet, task in pending_tasks:
+            if st.button(
+                f"Mark complete: {pet.name} - {task.description}",
+                key=f"complete_{pet.name}_{task.description}_{task.time}",
+            ):
+                scheduler.complete_task(pet, task)
+                st.success(f"Marked '{task.description}' complete.")
+                st.rerun()

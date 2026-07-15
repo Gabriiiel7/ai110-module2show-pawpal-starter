@@ -4,22 +4,22 @@
 
 **a. Initial design**
 
-- I chose Owner, Pet, Task, and Schedule for the first design.
-- Owner holds the owner name and the list of pets.
-- Pet holds the pet name, species, and pet tasks.
-- Task holds what needs to happen, when it should happen, and how important it is.
-- Schedule holds the day and the list of planned tasks.
+- I started with Owner, Pet, Task, and Schedule.
+- Owner stores the owner and their pets.
+- Pet stores the pet info and its tasks.
+- Task stores what needs to happen, when, and how often.
+- Schedule holds the plan for the day.
 
 **Class brainstorm**
 
-- Owner: Holds the owner's name and the list of pets.
-- Owner: Can add a pet and see the daily plan.
-- Pet: Holds the pet's name, species, and care notes.
-- Pet: Can update its info and show its tasks.
-- Task: Holds the task title, time, duration, and priority.
-- Task: Can be scheduled, edited, or marked done.
-- Schedule: Holds the date and the list of planned tasks.
-- Schedule: Can sort tasks, build a plan, and explain why each task was chosen.
+- Owner: keeps the owner name and pet list.
+- Owner: can add pets and view the plan.
+- Pet: keeps the pet name, species, and notes.
+- Pet: can update its info and show tasks.
+- Task: keeps the task time and frequency.
+- Task: can be edited or marked done.
+- Schedule: holds the daily task list.
+- Schedule: can sort and build the plan.
 
 ```mermaid
 classDiagram
@@ -58,8 +58,8 @@ classDiagram
 
 **b. Design changes**
 
-- I linked each task to a pet so the plan can show which pet each task belongs to.
-- I sorted the schedule by priority and time so the most important tasks appear first.
+- I linked each task to a pet so the plan clearly shows who it belongs to.
+- I sorted tasks by time so the day feels more natural.
 
 ---
 
@@ -81,13 +81,21 @@ classDiagram
 
 **a. How you used AI**
 
-- How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
-- What kinds of prompts or questions were most helpful?
+- I used the AI assistant to brainstorm the design, sketch the scheduler methods, and fix small Python issues.
+- The most useful part was getting quick suggestions without overcomplicating the system.
+- I also used it to improve the pytest cases and make the behavior easier to verify.
 
 **b. Judgment and verification**
 
-- Describe one moment where you did not accept an AI suggestion as-is.
-- How did you evaluate or verify what the AI suggested?
+- I rejected one suggestion that made the scheduler feel too abstract too early.
+- I kept it simpler and verified the change with tests.
+- Using separate chat sessions helped me stay organized by keeping design, coding, and testing in their own lane.
+
+**c. AI Strategy Reflection**
+
+- The most useful feature was getting focused help on one part at a time, like recurrence or conflict logic.
+- I changed one suggestion to keep the classes simpler and easier to follow.
+- I learned that being the lead architect means guiding the AI, not just accepting whatever it gives you.
 
 ---
 

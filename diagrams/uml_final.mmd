@@ -1,0 +1,46 @@
+classDiagram
+    class Task {
+        +description: str
+        +time: str
+        +frequency: str
+        +completed: bool
+        +mark_complete()
+        +mark_incomplete()
+        +edit(description, time, frequency)
+    }
+
+    class Pet {
+        +name: str
+        +species: str
+        +notes: str
+        +tasks: List[Task]
+        +add_task(task: Task)
+        +get_pending_tasks() List[Task]
+        +update_info(name, species, notes)
+    }
+
+    class Owner {
+        +name: str
+        +pets: List[Pet]
+        +add_pet(pet: Pet)
+        +get_pet(name) Pet|None
+        +get_all_tasks() List[Task]
+    }
+
+    class Scheduler {
+        +owner: Owner
+        +_time_to_minutes(time_value: str) int
+        +sort_by_time(items) List[tuple[Pet, Task]]
+        +build_daily_schedule() List[tuple[Pet, Task]]
+        +filter_tasks(items, pet_name, completed, recurring) List[tuple[Pet, Task]]
+        +get_recurring_tasks(items) List[tuple[Pet, Task]]
+        +complete_task(pet, task)
+        +detect_conflicts(items) List[str]
+        +print_schedule() str
+    }
+
+    Owner "1" --> "0..*" Pet : owns
+    Pet "1" --> "0..*" Task : contains
+    Scheduler --> Owner : uses
+    Scheduler --> Pet : organizes
+    Scheduler --> Task : schedules

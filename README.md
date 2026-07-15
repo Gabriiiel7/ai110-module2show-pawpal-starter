@@ -90,14 +90,18 @@ Confidence Level: ★★★★★
 | Conflict detection | Scheduler.detect_conflicts() | Returns lightweight warning messages for exact-time conflicts. |
 | Recurring task logic | Scheduler.complete_task() | Marks a task complete and creates the next recurring copy for daily or weekly tasks. |
 
-## 📸 Demo Walkthrough
+## 🎥 Demo Walkthrough
 
-Describe your app in numbered steps so a reader can follow along without watching a video:
+The app lets a user add a pet and save their owner name.
+A user can add tasks with a time and frequency.
+The scheduler sorts tasks by time and shows them in order.
+The app warns about time conflicts and flags recurring tasks.
+A simple workflow is add a pet → add a task → generate the schedule.
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+Example CLI output from running main.py:
 
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
+```text
+Today's Schedule
+- Mochi: Morning walk at 07:30 (Pending)
+- Mochi: Feed breakfast at 08:00 (Pending)
+```
