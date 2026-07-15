@@ -8,7 +8,8 @@
 - Owner stores the owner and their pets.
 - Pet stores the pet info and its tasks.
 - Task stores what needs to happen, when, and how often.
-- Schedule holds the plan for the day.
+- Schedule holds the plan for the day.git push origin main
+
 
 **Class brainstorm**
 
@@ -23,7 +24,7 @@
 
 ```mermaid
 classDiagram
-    class Owner {
+    class Owner {git s
         +String name
         +List~Pet~ pets
         +addPet()
