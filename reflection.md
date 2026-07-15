@@ -7,6 +7,56 @@
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
+Add a pet – The user can enter a new pet's info (name, type, etc.) so the app knows about it.
+Schedule a task – The user can set up a feeding, walk, medication, or appointment for a specific pet at a specific time.
+View today's schedule – The user can see a simple list of everything that needs to happen today, across all their pets.
+
+**Class brainstorm**
+
+- Owner: Holds the owner's name and the list of pets.
+- Owner: Can add a pet and see the daily plan.
+- Pet: Holds the pet's name, species, and care notes.
+- Pet: Can update its info and show its tasks.
+- Task: Holds the task title, time, duration, and priority.
+- Task: Can be scheduled, edited, or marked done.
+- Schedule: Holds the date and the list of planned tasks.
+- Schedule: Can sort tasks, build a plan, and explain why each task was chosen.
+
+```mermaid
+classDiagram
+    class Owner {
+        +String name
+        +List~Pet~ pets
+        +addPet()
+        +viewPlan()
+    }
+    class Pet {
+        +String name
+        +String species
+        +String notes
+        +List~Task~ tasks
+        +addTask()
+        +updateInfo()
+    }
+    class Task {
+        +String title
+        +String time
+        +int duration
+        +String priority
+        +editTask()
+        +markDone()
+    }
+    class Schedule {
+        +String date
+        +List~Task~ tasks
+        +buildPlan()
+        +explainPlan()
+    }
+    Owner "1" --> "1..*" Pet : owns
+    Pet "1" --> "0..*" Task : has
+    Schedule "1" --> "0..*" Task : includes
+```
+
 **b. Design changes**
 
 - Did your design change during implementation?
