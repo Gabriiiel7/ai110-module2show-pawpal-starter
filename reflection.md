@@ -4,12 +4,11 @@
 
 **a. Initial design**
 
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
-
-Add a pet – The user can enter a new pet's info (name, type, etc.) so the app knows about it.
-Schedule a task – The user can set up a feeding, walk, medication, or appointment for a specific pet at a specific time.
-View today's schedule – The user can see a simple list of everything that needs to happen today, across all their pets.
+- I chose Owner, Pet, Task, and Schedule for the first design.
+- Owner holds the owner name and the list of pets.
+- Pet holds the pet name, species, and pet tasks.
+- Task holds what needs to happen, when it should happen, and how important it is.
+- Schedule holds the day and the list of planned tasks.
 
 **Class brainstorm**
 
@@ -59,8 +58,8 @@ classDiagram
 
 **b. Design changes**
 
-- Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
+- I linked each task to a pet so the plan can show which pet each task belongs to.
+- I sorted the schedule by priority and time so the most important tasks appear first.
 
 ---
 
@@ -73,8 +72,8 @@ classDiagram
 
 **b. Tradeoffs**
 
-- Describe one tradeoff your scheduler makes.
-- Why is that tradeoff reasonable for this scenario?
+- The scheduler only checks for exact time matches when it looks for conflicts.
+- This is simple and fast, and it is good enough for a small pet care app.
 
 ---
 
